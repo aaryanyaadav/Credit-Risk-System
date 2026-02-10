@@ -1,15 +1,45 @@
 import pandas as pd
 
-Median_credit_amount=130.33
+# Median used during training
+Median_credit_amount = 130.33
 
-def tranform_input(data_dict):
+# EXACT column order used during training (VERY IMPORTANT)
+MODEL_COLUMNS = [
+    'Age',
+    'Sex',
+    'Job',
+    'Housing',
+    'Credit amount',
+    'Duration',
+    'Both_Accounts_Null',
+    'Credit_per_month',
+    'Stress_score',
+    'Saving_score',
+    'Checking_score',
+    'Financial_strength',
+    'Business_risk',
+    'High_risk_combo',
+    'Purpose_car',
+    'Purpose_domestic appliances',
+    'Purpose_education',
+    'Purpose_furniture/equipment',
+    'Purpose_radio/TV',
+    'Purpose_repairs',
+    'Purpose_vacation/others'
+]
 
-    df=pd.DataFrame([data_dict])
 
-    # for credit per month
+def transform_input(data_dict):
+
+    # Convert user input to dataframe
+    df = pd.DataFrame([data_dict])
+
+
+
+    # Credit per month
     df["Credit_per_month"] = df["Credit amount"] / df["Duration"]
 
-    # saving score mapping
+    # Saving score mapping
     saving_map = {
         "little": 1,
         "moderate": 2,
@@ -49,11 +79,17 @@ def tranform_input(data_dict):
         (df["Credit_per_month"] > Median_credit_amount)
     ).astype(int)
 
+    # Both accounts null
+    df["Both_Accounts_Null"] = (
+        df["Saving accounts"].isnull() &
+        df["Checking account"].isnull()
+    ).astype(int)
 
-    # Sex
+
+    # Sex encoding
     df["Sex"] = df["Sex"].map({"male": 0, "female": 1})
 
-    # Housing
+    # Housing encoding
     df["Housing"] = df["Housing"].map({
         "own": 2,
         "rent": 1,
@@ -63,26 +99,31 @@ def tranform_input(data_dict):
     # One-hot encode Purpose
     df = pd.get_dummies(df, columns=["Purpose"])
 
+    # Only the columns used during training
     purpose_cols = [
-        "Purpose_radio/TV",
+        "Purpose_car",
+        "Purpose_domestic appliances",
         "Purpose_education",
         "Purpose_furniture/equipment",
-        "Purpose_car",
-        "Purpose_business",
-        "Purpose_domestic appliances",
+        "Purpose_radio/TV",
         "Purpose_repairs",
         "Purpose_vacation/others"
     ]
 
-    # Ensure all columns exist
+    # Ensure all required columns exist
     for col in purpose_cols:
         if col not in df.columns:
             df[col] = 0
 
-    # Drop raw columns not used by model
+
+    # Droping the columns
+
     df = df.drop([
         "Saving accounts",
         "Checking account"
     ], axis=1)
+
+
+    df = df[MODEL_COLUMNS]
 
     return df
