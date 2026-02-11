@@ -21,8 +21,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # header
-st.markdown("<div class='main-title'> Credit Risk Scoring Dashboard</div>", unsafe_allow_html=True)
-st.write("AI-powered system to predict loan default risk")
+st.markdown("<div class='main-title'> Credit Risk Scoring System</div>", unsafe_allow_html=True)
+st.write("A System Enabled with AI to predict the Loan Default Risk")
 
 st.divider()
 
@@ -80,7 +80,7 @@ if predict_btn:
 
     try:
         response = requests.post(
-            "http://127.0.0.1:8000/predict",
+            "https://credit-risk-system-93rh.onrender.com/predict",
             json=input_data
         )
 
@@ -91,7 +91,7 @@ if predict_btn:
         default_prob = result["default_probability"]
         top_factors = result["top_risk_factors"]
 
-        st.subheader(" Prediction Results")
+        
 
         # applicant summary
         st.subheader(" Applicant Summary")
@@ -128,7 +128,7 @@ if predict_btn:
         col3.metric("Decision", decision)
 
         st.divider()
-
+        st.subheader(" Result:")
         # guage
         fig = go.Figure(go.Indicator(
             mode="gauge+number",
