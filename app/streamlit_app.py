@@ -107,7 +107,7 @@ if predict_btn:
 
             with c2:
                 st.markdown("#### Financial Info")
-                st.write(f"**Credit Amount:** ₹{credit_amount:,}")
+                st.write(f"**Credit Amount:** {credit_amount:,}")
                 st.write(f"**Loan Duration:** {duration} months")
                 st.write(f"**Housing:** {housing}")
 
