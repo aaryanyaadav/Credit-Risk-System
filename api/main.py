@@ -1,15 +1,18 @@
 from fastapi import FastAPI
-import joblib
 import pandas as pd
 import shap
+from xgboost import XGBClassifier
 
 from src.feature_engineering import transform_input
 
-app=FastAPI(title="Credit risk prediction api")
+app = FastAPI(title="Credit risk prediction api")
 
-model=joblib.load("models/xgboost_model.pkl")
+#Load model using XGBoost native format
+model = XGBClassifier()
+model.load_model("models/xgboost_model.json")
 
-explainer=shap.TreeExplainer(model)     #used for explination
+#SHAP explainer
+explainer = shap.TreeExplainer(model)
 
 def decision(score):
     if score >= 70:
@@ -19,24 +22,31 @@ def decision(score):
     else:
         return "Reject"
 
+#Health check endpoint
+@app.get("/health")
+def health_check():
+    return {
+        "status": "ok",
+        "service": "credit-risk-api",
+        "uptime": "running",
+        "version": "1.0.0"
+    }
 
 @app.post("/predict")
-def predict(data:dict):
-    process_data_df=transform_input(data)
+def predict(data: dict):
+    process_data_df = transform_input(data)
 
-    prob=model.predict_proba(process_data_df)[0][1]
+    prob = model.predict_proba(process_data_df)[0][1]
+    risk_score = (1 - prob) * 100
+    final_decision = decision(risk_score)
 
-    risk_score=(1-prob)*100
+    shap_values = explainer.shap_values(process_data_df)[0]
 
-    final_decision=decision(risk_score)
-
-    shap_values=explainer.shap_values(process_data_df)[0]
-
-    features_impacts=pd.DataFrame({
-        "feature":process_data_df.columns,
-        "impact":shap_values
+    features_impacts = pd.DataFrame({
+        "feature": process_data_df.columns,
+        "impact": shap_values
     })
-    
+
     top_risk = (
         features_impacts
         .sort_values(by="impact", ascending=False)
@@ -49,13 +59,4 @@ def predict(data:dict):
         "risk_score": round(float(risk_score), 2),
         "decision": final_decision,
         "top_risk_factors": top_risk
-    }
-#keep the system alive  and constantly ping it and check the health as well
-@app.get("/health")
-def health_check():
-    return {
-        "status": "ok",
-        "service": "credit-risk-api",
-        "uptime": "running",
-        "version": "1.0.0"
     }

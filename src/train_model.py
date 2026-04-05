@@ -34,6 +34,6 @@ print("ROC-AUC:", roc_auc_score(Y_test, y_prob))
 
 print(classification_report(Y_test, y_pred))
 
-joblib.dump(model, "models/xgboost_model.pkl")
+model.save_model("models/xgboost_model.json")
 
-print("\nModel saved")
+print("\nModel saved in JSON format")
