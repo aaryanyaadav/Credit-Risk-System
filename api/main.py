@@ -50,3 +50,12 @@ def predict(data:dict):
         "decision": final_decision,
         "top_risk_factors": top_risk
     }
+#keep the system alive  and constantly ping it and check the health as well
+@app.get("/health")
+def health_check():
+    return {
+        "status": "ok",
+        "service": "credit-risk-api",
+        "uptime": "running",
+        "version": "1.0.0"
+    }
