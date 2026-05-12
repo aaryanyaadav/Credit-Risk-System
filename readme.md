@@ -5,7 +5,44 @@ An end-to-end, industry-style machine learning project that predicts the probabi
 This project simulates how real fintech and banking systems evaluate credit applications and assist in loan approval decisions.
 
 ---
+# Tech Stack
 
+---
+
+<div align="center">
+
+# Tech Stack
+
+<br>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-111827?style=for-the-badge&logo=python&logoColor=FFD43B" />
+  <img src="https://img.shields.io/badge/PyTorch-111827?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" />
+  <img src="https://img.shields.io/badge/TensorFlow-111827?style=for-the-badge&logo=tensorflow&logoColor=FF6F00" />
+  <img src="https://img.shields.io/badge/Scikit--Learn-111827?style=for-the-badge&logo=scikitlearn&logoColor=F7931E" />
+</p>
+
+<br>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=00C7B7" />
+  <img src="https://img.shields.io/badge/Streamlit-111827?style=for-the-badge&logo=streamlit&logoColor=FF4B4B" />
+  <img src="https://img.shields.io/badge/Pandas-111827?style=for-the-badge&logo=pandas&logoColor=FFFFFF" />
+  <img src="https://img.shields.io/badge/NumPy-111827?style=for-the-badge&logo=numpy&logoColor=4DABF7" />
+</p>
+
+<br>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/NLTK-111827?style=for-the-badge&logo=python&logoColor=FFFFFF" />
+  <img src="https://img.shields.io/badge/SHAP-111827?style=for-the-badge&logo=python&logoColor=FFB000" />
+  <img src="https://img.shields.io/badge/Uvicorn-111827?style=for-the-badge&logo=uvicorn&logoColor=FFFFFF" />
+  <img src="https://img.shields.io/badge/Pydantic-111827?style=for-the-badge&logo=pydantic&logoColor=E92063" />
+</p>
+
+</div>
+
+---
 #  Project Overview
 
 This system predicts whether a customer is likely to default on a loan and generates:
@@ -264,8 +301,8 @@ streamlit run app/streamlit_app.py
 
 #  Author
 
-Aryan Yadav
-projects.aky@gmail.com
+Aryan Kumar Yadav
+
 ---
 
 
