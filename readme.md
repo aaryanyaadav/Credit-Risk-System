@@ -18,7 +18,6 @@ This project simulates how real fintech and banking systems evaluate credit appl
 <p align="center">
   <img src="https://img.shields.io/badge/Python-111827?style=for-the-badge&logo=python&logoColor=FFD43B" />
   <img src="https://img.shields.io/badge/PyTorch-111827?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" />
-  <img src="https://img.shields.io/badge/TensorFlow-111827?style=for-the-badge&logo=tensorflow&logoColor=FF6F00" />
   <img src="https://img.shields.io/badge/Scikit--Learn-111827?style=for-the-badge&logo=scikitlearn&logoColor=F7931E" />
 </p>
 
@@ -34,7 +33,6 @@ This project simulates how real fintech and banking systems evaluate credit appl
 <br>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/NLTK-111827?style=for-the-badge&logo=python&logoColor=FFFFFF" />
   <img src="https://img.shields.io/badge/SHAP-111827?style=for-the-badge&logo=python&logoColor=FFB000" />
   <img src="https://img.shields.io/badge/Uvicorn-111827?style=for-the-badge&logo=uvicorn&logoColor=FFFFFF" />
   <img src="https://img.shields.io/badge/Pydantic-111827?style=for-the-badge&logo=pydantic&logoColor=E92063" />
