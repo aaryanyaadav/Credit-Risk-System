@@ -231,7 +231,6 @@ Interactive UI with:
 * Color-coded decision box
 * Top risk factors display
 
-This simulates a real fintech dashboard.
 
 ---
 
