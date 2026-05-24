@@ -2,6 +2,8 @@ from fastapi import FastAPI
 import pandas as pd
 import shap
 from xgboost import XGBClassifier
+from datetime import datetime ,timezone
+from fastapi import FastAPI
 
 from src.feature_engineering import transform_input
 
@@ -23,11 +25,11 @@ def decision(score):
         return "Reject"
 @app.get("/ping")
 def ping():
-
     return {
-    "status": "alive",
-    "timestamp": str(datetime.utcnow())
-    } 
+        "status": "alive",
+        # This is the modern, safe way to get UTC time
+        "timestamp": str(datetime.now(timezone.utc)) 
+    }
 #Health check endpoint
 
 @app.get("/health")
