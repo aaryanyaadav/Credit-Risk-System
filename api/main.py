@@ -21,8 +21,15 @@ def decision(score):
         return "Review"
     else:
         return "Reject"
+@app.get("/ping")
+def ping():
 
+    return {
+    "status": "alive",
+    "timestamp": str(datetime.utcnow())
+    } 
 #Health check endpoint
+
 @app.get("/health")
 def health_check():
     return {
