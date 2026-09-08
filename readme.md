@@ -298,6 +298,7 @@ streamlit run app/streamlit_app.py
 #  Author
 
 Aryan Kumar Yadav
+aryankyadav.dev@gmail.com
 
 ---
 
