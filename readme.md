@@ -2,7 +2,7 @@
 
 An end-to-end, industry-style machine learning project that predicts the probability of loan default using Boosting (XGBoost), domain-driven feature engineering, explainable AI (SHAP), a REST API (FastAPI), and an interactive frontend (Streamlit).
 
-This project simulates how real fintech and banking systems evaluate credit applications and assist in loan approval decisions.
+This project simulates how real fintech and banking systems evaluate credit applications and assist in loan approval decisions not just relying on credit score.
 
 ---
 # Tech Stack
